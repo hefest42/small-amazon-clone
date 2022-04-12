@@ -1,7 +1,7 @@
 import React from "react";
 
-const LogIn = () => {
+const SmallFooter = () => {
     return <div></div>;
 };
 
-export default LogIn;
+export default SmallFooter;

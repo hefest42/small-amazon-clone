@@ -1,3 +1,11 @@
+$main-orange: #ff9900;
+$secondary-orange: #f0c14b;
+$light-yellow: #f3d078;
+$main-blue: #146eb4;
+$light-blue: #48a3c6;
+$dark-gray: #232f3e;
+$light-gray: #37475a;
+
 .pageWrapper {
     position: relative;
     width: 100%;
@@ -6,4 +14,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-orange {
+    background-color: $light-yellow;
+    width: 100%;
+    height: 1.8rem;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $secondary-orange;
+    }
+}
+
+.line-divider {
+    width: 100%;
+    margin: 1rem 0;
+
+    display: flex;
+
+    &__line {
+        width: 50%;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(90deg, #ddd 50%, rgba(255, 255, 255, 1) 85%);
+        height: 1px;
+    }
 }
