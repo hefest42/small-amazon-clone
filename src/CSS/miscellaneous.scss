@@ -5,6 +5,7 @@ $main-blue: #146eb4;
 $light-blue: #48a3c6;
 $dark-gray: #232f3e;
 $light-gray: #37475a;
+$input-border: #a6a6a6;
 
 .pageWrapper {
     position: relative;
@@ -32,6 +33,15 @@ $light-gray: #37475a;
 
     &:hover {
         background-color: $secondary-orange;
+    }
+}
+
+.link {
+    color: $main-blue;
+    text-decoration: none;
+
+    &:hover {
+        color: $main-orange;
     }
 }
 
