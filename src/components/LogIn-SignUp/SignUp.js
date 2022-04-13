@@ -21,6 +21,7 @@ const SignUp = () => {
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="amazon logo" />
                 </Link>
             </div>
+
             <div className="logIn center-column">
                 <form className="logIn-form center-column" onClick={formSubmitHandler}>
                     <div className="logIn-title">Create Account</div>

@@ -67,13 +67,27 @@
 
     &-privacy,
     &-sign {
-        width: 90%;
+        color: $light-gray;
+        width: 100%;
         font-size: 0.9rem;
         margin: 1rem 0;
         line-height: 150%;
+        text-align: start;
 
         svg {
             font-size: 0.5rem;
+        }
+    }
+
+    &-help {
+        width: 100%;
+        text-align: start;
+        font-size: 0.85rem;
+        vertical-align: middle;
+        margin-bottom: 1rem;
+
+        svg {
+            font-size: 0.65rem;
         }
     }
 }
@@ -99,5 +113,43 @@
         color: $input-border;
         margin-top: 1rem;
         font-size: 0.8rem;
+    }
+}
+
+.newTo {
+    width: 22rem;
+
+    &-amazon {
+        width: 100%;
+        margin: 1rem 0;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__line {
+            background-color: #e0e0e0cb;
+            width: 33%;
+            height: 1px;
+        }
+
+        &__text {
+            color: #868686;
+            font-size: 0.9rem;
+        }
+    }
+
+    &-button {
+        background-color: #e7e9ec;
+        width: 100%;
+        height: 1.8rem;
+        border-color: #adb1b8 #a2a6ac #8d9096;
+        border-style: solid;
+        border-width: 1px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(209, 229, 235, 0.726); // cant find the right color for button hover
+        }
     }
 }
