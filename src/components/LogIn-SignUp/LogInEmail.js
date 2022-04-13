@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
 import { AiFillCaretRight } from "react-icons/ai";
 
 const LogInEmail = () => {
+    const emailRef = useRef();
+
+    const emailSubmitHandler = async e => {
+        e.preventDefault();
+
+        const email = emailRef.current.value;
+
+        console.log(email);
+
+        try {
+        } catch (error) {}
+    };
+
     return (
         <>
             <div className="logIn center-column">
-                <form className="logIn-form center-column">
+                <form className="logIn-form center-column" onSubmit={emailSubmitHandler}>
                     <div className="logIn-title">Sign-In</div>
 
                     <div className="logIn-input">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" />
+                        <input type="email" id="email" name="email" ref={emailRef} />
                     </div>
                     <button className="button-orange logIn-button">Continue</button>
 

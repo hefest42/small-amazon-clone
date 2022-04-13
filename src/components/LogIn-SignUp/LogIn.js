@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import LogInEmail from "./LogInEmail";
@@ -7,7 +7,21 @@ import PageWrapper from "../UI/PageWrapper";
 import SmallFooter from "./SmallFooter";
 
 const LogIn = () => {
-    const [stepper, setStepper] = useState(2);
+    const [stepper, setStepper] = useState(1);
+
+    useEffect(() => {
+        const getAccounts = async () => {
+            try {
+                const response = await fetch("https://clone-c99fe-default-rtdb.europe-west1.firebasedatabase.app/accounts.json");
+
+                const data = await response.json();
+
+                console.log(data);
+            } catch (error) {}
+        };
+
+        getAccounts();
+    }, []);
 
     return (
         <PageWrapper>
@@ -18,7 +32,7 @@ const LogIn = () => {
             </div>
 
             {stepper === 1 && <LogInEmail />}
-            {stepper === 2 && <LogInPassword />}
+            {stepper === 2 && <LogInPassword changeStep={setStepper} />}
             <SmallFooter />
         </PageWrapper>
     );
