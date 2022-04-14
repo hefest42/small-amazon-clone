@@ -104,15 +104,25 @@
     }
 
     &-error {
-        width: 100%;
         color: $error-red;
-        font-size: 0.8rem;
-        margin-bottom: 0.3rem;
+        width: 22rem;
+        height: 5rem;
+        border: 1px solid $error-red;
+        margin-bottom: 1rem;
 
-        input {
-            box-shadow: 0px 0px 2px 1px $error-red;
-            border: 1px solid $main-orange;
-            outline: none;
+        display: flex;
+
+        &__svg {
+            width: 20%;
+
+            svg {
+                font-size: 3rem;
+            }
+        }
+
+        &__text {
+            font-size: 1.1rem;
+            font-weight: bold;
         }
     }
 }

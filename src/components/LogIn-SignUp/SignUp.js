@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { BsInfoLg } from "react-icons/bs";
 import { AiFillCaretRight } from "react-icons/ai";
+import { BiError } from "react-icons/bi";
 
 import PageWrapper from "../UI/PageWrapper";
 import LineDivider from "../UI/LineDivider";
@@ -69,11 +70,18 @@ const SignUp = () => {
                 </Link>
             </div>
 
+            <div className="logIn-error">
+                <div className="logIn-error__svg center">
+                    <BiError />
+                </div>
+                <div className="logIn-error__text center">Passwords don't match</div>
+            </div>
+
             <div className="logIn center-column">
                 <form className="logIn-form center-column" onSubmit={formSubmitHandler}>
                     <div className="logIn-title">Create Account</div>
 
-                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
+                    <div className={"logIn-input"}>
                         <label htmlFor="name">Your Name</label>
                         <input type="text" id="name" name="name" autoComplete="off" ref={nameRef} />
                     </div>
@@ -84,7 +92,7 @@ const SignUp = () => {
                         </div>
                     )}
 
-                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
+                    <div className={"logIn-input"}>
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" ref={emailRef} />
                     </div>
@@ -95,7 +103,7 @@ const SignUp = () => {
                         </div>
                     )}
 
-                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
+                    <div className={"logIn-input"}>
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
