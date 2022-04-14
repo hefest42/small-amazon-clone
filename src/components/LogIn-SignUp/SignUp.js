@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,8 @@ import LineDivider from "../UI/LineDivider";
 import SmallFooter from "./SmallFooter";
 
 const SignUp = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const [allInputsError, setAllInputError] = useState(false);
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -32,10 +34,12 @@ const SignUp = () => {
 
         const name = nameRef.current.value;
         const email = emailRef.current.value;
+
         const password = passwordRef.current.value;
         const rePassword = rePasswordRef.current.value;
 
-        if (name === "" || email === "" || password === "" || rePassword === "") {
+        if (name === "" && email === "" && password === "" && rePassword === "") {
+            setAllInputError(true);
             return;
         }
 
@@ -49,7 +53,7 @@ const SignUp = () => {
             password: password,
         };
 
-        postAccountHandler(account);
+        // postAccountHandler(account);
 
         nameRef.current.value = "";
         emailRef.current.value = "";
@@ -69,16 +73,29 @@ const SignUp = () => {
                 <form className="logIn-form center-column" onSubmit={formSubmitHandler}>
                     <div className="logIn-title">Create Account</div>
 
-                    <div className="logIn-input">
+                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
                         <label htmlFor="name">Your Name</label>
                         <input type="text" id="name" name="name" autoComplete="off" ref={nameRef} />
                     </div>
 
-                    <div className="logIn-input">
+                    {allInputsError && (
+                        <div className="logIn-error">
+                            <BsInfoLg /> Enter your name
+                        </div>
+                    )}
+
+                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" ref={emailRef} />
                     </div>
-                    <div className="logIn-input">
+
+                    {allInputsError && (
+                        <div className="logIn-error">
+                            <BsInfoLg /> Enter your email
+                        </div>
+                    )}
+
+                    <div className={allInputsError ? "logIn-input logIn-error" : "logIn-input"}>
                         <label htmlFor="password">Password</label>
                         <input
                             type="password"
@@ -88,6 +105,7 @@ const SignUp = () => {
                             placeholder="At least 6 characters"
                             ref={passwordRef}
                         />
+
                         <p>
                             <BsInfoLg /> Passwords must be at least 6 characters
                         </p>
