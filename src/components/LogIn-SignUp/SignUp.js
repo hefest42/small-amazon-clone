@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -12,11 +12,22 @@ import SmallFooter from "./SmallFooter";
 
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState("");
-    const [allInputsError, setAllInputError] = useState(false);
+    const [showError, setShowError] = useState(false);
+    const [allAccounts, setAllAccounts] = useState([]);
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const rePasswordRef = useRef();
+
+    const setErrorMessageHandler = msg => {
+        setShowError(true);
+        setErrorMessage(msg);
+
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
+        rePasswordRef.current.value = "";
+    };
 
     const postAccountHandler = async acc => {
         try {
@@ -33,6 +44,8 @@ const SignUp = () => {
     const formSubmitHandler = e => {
         e.preventDefault();
 
+        console.log(allAccounts);
+
         const name = nameRef.current.value;
         const email = emailRef.current.value;
 
@@ -40,11 +53,24 @@ const SignUp = () => {
         const rePassword = rePasswordRef.current.value;
 
         if (name === "" && email === "" && password === "" && rePassword === "") {
-            setAllInputError(true);
+            setErrorMessageHandler("Please fill out all the fields.");
             return;
         }
 
         if (password !== rePassword) {
+            setErrorMessageHandler("Password don't match.");
+            return;
+        }
+
+        if (allAccounts.every(acc => acc.name === name)) {
+            setErrorMessageHandler("Username already exsits.");
+
+            return;
+        }
+
+        if (allAccounts.every(acc => acc.email === email)) {
+            setErrorMessageHandler("Email already in use. Try a different one.");
+
             return;
         }
 
@@ -54,13 +80,38 @@ const SignUp = () => {
             password: password,
         };
 
-        // postAccountHandler(account);
+        postAccountHandler(account);
 
         nameRef.current.value = "";
         emailRef.current.value = "";
         passwordRef.current.value = "";
         rePasswordRef.current.value = "";
     };
+
+    useEffect(() => {
+        const getAccounts = async () => {
+            try {
+                const response = await fetch("https://clone-c99fe-default-rtdb.europe-west1.firebasedatabase.app/accounts.json");
+
+                const data = await response.json();
+
+                const sortedAccounts = [];
+
+                for (const key in data) {
+                    sortedAccounts.push({
+                        id: key,
+                        name: data[key].name,
+                        email: data[key].email,
+                        password: data[key].password,
+                    });
+                }
+
+                setAllAccounts(sortedAccounts);
+            } catch (error) {}
+        };
+
+        getAccounts();
+    }, []);
 
     return (
         <PageWrapper>
@@ -70,12 +121,14 @@ const SignUp = () => {
                 </Link>
             </div>
 
-            <div className="logIn-error">
-                <div className="logIn-error__svg center">
-                    <BiError />
+            {showError && (
+                <div className="logIn-error">
+                    <div className="logIn-error__svg center">
+                        <BiError />
+                    </div>
+                    <div className="logIn-error__text center">{errorMessage}</div>
                 </div>
-                <div className="logIn-error__text center">Passwords don't match</div>
-            </div>
+            )}
 
             <div className="logIn center-column">
                 <form className="logIn-form center-column" onSubmit={formSubmitHandler}>
@@ -86,22 +139,10 @@ const SignUp = () => {
                         <input type="text" id="name" name="name" autoComplete="off" ref={nameRef} />
                     </div>
 
-                    {allInputsError && (
-                        <div className="logIn-error">
-                            <BsInfoLg /> Enter your name
-                        </div>
-                    )}
-
                     <div className={"logIn-input"}>
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" ref={emailRef} />
                     </div>
-
-                    {allInputsError && (
-                        <div className="logIn-error">
-                            <BsInfoLg /> Enter your email
-                        </div>
-                    )}
 
                     <div className={"logIn-input"}>
                         <label htmlFor="password">Password</label>
@@ -111,6 +152,7 @@ const SignUp = () => {
                             name="password"
                             autoComplete="on"
                             placeholder="At least 6 characters"
+                            minLength="6"
                             ref={passwordRef}
                         />
 
@@ -121,7 +163,7 @@ const SignUp = () => {
 
                     <div className="logIn-input">
                         <label htmlFor="re-password">Re-enter Password</label>
-                        <input type="password" id="re-password" name="re-password" autoComplete="on" ref={rePasswordRef} />
+                        <input type="password" id="re-password" name="re-password" autoComplete="on" minLength="6" ref={rePasswordRef} />
                     </div>
                     <button className="button-orange logIn-button">Continue</button>
                 </form>

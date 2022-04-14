@@ -8,6 +8,8 @@ import SmallFooter from "./SmallFooter";
 
 const LogIn = () => {
     const [stepper, setStepper] = useState(1);
+    const [allAccounts, setAllAccounts] = useState([]);
+    const [userAccount, setUserAccount] = useState("");
 
     useEffect(() => {
         const getAccounts = async () => {
@@ -16,7 +18,18 @@ const LogIn = () => {
 
                 const data = await response.json();
 
-                console.log(data);
+                const sortedAccounts = [];
+
+                for (const key in data) {
+                    sortedAccounts.push({
+                        id: key,
+                        name: data[key].name,
+                        email: data[key].email,
+                        password: data[key].password,
+                    });
+                }
+
+                setAllAccounts(sortedAccounts);
             } catch (error) {}
         };
 
@@ -31,8 +44,8 @@ const LogIn = () => {
                 </Link>
             </div>
 
-            {stepper === 1 && <LogInEmail />}
-            {stepper === 2 && <LogInPassword changeStep={setStepper} />}
+            {stepper === 1 && <LogInEmail accounts={allAccounts} getUserAccount={setUserAccount} changeStep={setStepper} />}
+            {stepper === 2 && <LogInPassword changeStep={setStepper} account={userAccount} />}
             <SmallFooter />
         </PageWrapper>
     );

@@ -1,24 +1,53 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { AiFillCaretRight } from "react-icons/ai";
+import { BiError } from "react-icons/bi";
 
-const LogInEmail = () => {
+const LogInEmail = ({ accounts, getUserAccount, changeStep }) => {
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const emailRef = useRef();
 
-    const emailSubmitHandler = async e => {
+    const setErrorMessageHandler = msg => {
+        setShowError(true);
+        setErrorMessage(msg);
+
+        emailRef.current.value = "";
+    };
+
+    const emailSubmitHandler = e => {
         e.preventDefault();
 
         const email = emailRef.current.value;
 
-        console.log(email);
+        const account = accounts.filter(acc => acc.email === email);
 
-        try {
-        } catch (error) {}
+        if (email === "") {
+            setErrorMessageHandler("Please input a email address.");
+            return;
+        }
+
+        if (account.length === 0) {
+            setErrorMessageHandler("Couldn't find an Account with that email. Please try again.");
+            return;
+        }
+
+        getUserAccount(account[0]);
+        changeStep(2);
     };
 
     return (
         <>
+            {showError && (
+                <div className="logIn-error">
+                    <div className="logIn-error__svg center">
+                        <BiError />
+                    </div>
+                    <div className="logIn-error__text center">{errorMessage}</div>
+                </div>
+            )}
+
             <div className="logIn center-column">
                 <form className="logIn-form center-column" onSubmit={emailSubmitHandler}>
                     <div className="logIn-title">Sign-In</div>
