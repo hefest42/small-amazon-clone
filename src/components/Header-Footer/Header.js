@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
@@ -8,7 +10,9 @@ const Header = () => {
     return (
         <header className="header center">
             <div className="header-inner">
-                <div className="header-part center">AMAZON</div>
+                <Link to="/store" className="header-part center">
+                    <div className=" center">AMAZON</div>
+                </Link>
 
                 <div className="header-split header-part center">
                     <div className="header-split__left">
