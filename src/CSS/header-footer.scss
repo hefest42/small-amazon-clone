@@ -1,1 +1,88 @@
 @import "./miscellaneous.scss";
+
+.header {
+    background-color: #111111;
+    color: #fff;
+    width: 100%;
+    height: 4rem;
+
+    &-inner {
+        width: 98%;
+        height: 92%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &-part {
+        height: 100%;
+        padding: 0 0.7rem;
+        border: 1px solid #111;
+
+        &:hover {
+            border: 1px solid #fff;
+        }
+    }
+
+    &-split {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__left {
+            height: 50%;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        &__right {
+            width: 100%;
+            height: 50%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        &__top {
+            font-size: 0.8rem;
+        }
+
+        &__down {
+            font-weight: bold;
+        }
+    }
+
+    &-form {
+        flex-grow: 1;
+    }
+
+    &-cart {
+        position: relative;
+        width: 5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 3rem;
+            height: 100%;
+        }
+
+        &__number {
+            color: $main-orange;
+            position: absolute;
+            top: 27%;
+            left: 36%;
+            width: 25px;
+            height: 20px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+    }
+}
