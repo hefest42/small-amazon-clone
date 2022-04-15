@@ -2,6 +2,7 @@ import React from "react";
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart } from "react-icons/bs";
+import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
 const Header = () => {
     return (
@@ -19,7 +20,24 @@ const Header = () => {
                     </div>
                 </div>
 
-                <div className="header-form"></div>
+                <div className="header-form center">
+                    <div className="header-form__inner center">
+                        <div className="header-form__left center">
+                            <div className="space-between">
+                                <span>All</span>
+                                <span>
+                                    <AiFillCaretDown />
+                                </span>
+                            </div>
+                        </div>
+                        <div className="header-form__middle center">
+                            <input type="text" />
+                        </div>
+                        <div className="header-form__right center">
+                            <AiOutlineSearch />
+                        </div>
+                    </div>
+                </div>
 
                 <div className="header-split header-part">
                     <div className="header-split__right">

@@ -57,13 +57,8 @@
         }
     }
 
-    &-form {
-        flex-grow: 1;
-    }
-
     &-cart {
         position: relative;
-        width: 5rem;
 
         display: flex;
         justify-content: center;
@@ -77,12 +72,68 @@
         &__number {
             color: $main-orange;
             position: absolute;
-            top: 27%;
-            left: 36%;
+            top: 25%;
+            left: 28%;
             width: 25px;
             height: 20px;
             font-size: 1.1rem;
             text-align: center;
+        }
+    }
+}
+
+.header-form {
+    flex-grow: 1;
+    height: 100%;
+
+    &__inner {
+        width: 98.5%;
+        height: 70%;
+    }
+
+    &__left {
+        background-color: #f3f3f3;
+        color: #0f1111;
+        width: 3rem;
+        height: 100%;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        svg {
+            font-size: 0.7rem;
+        }
+    }
+
+    &__middle {
+        background-color: #fff;
+        flex-grow: 1;
+        height: 100%;
+
+        input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+            border: none;
+            font-size: 1.1rem;
+            line-height: 100%;
+
+            &:focus {
+                width: 98%;
+                height: 80%;
+            }
+        }
+    }
+
+    &__right {
+        background-color: $main-orange;
+        width: 3rem;
+        height: 100%;
+        cursor: pointer;
+
+        svg {
+            color: #111;
+            width: 100%;
+            height: 80%;
         }
     }
 }
