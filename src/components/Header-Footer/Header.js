@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { BsCart } from "react-icons/bs";
+import { BsCart, BsCaretDownFill } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
 const Header = () => {
@@ -46,7 +46,10 @@ const Header = () => {
                 <div className="header-split header-part">
                     <div className="header-split__right">
                         <span className="header-split__top">Hello, Nemanja</span>
-                        <span className="header-split__down">{`Account & Lists`}</span>
+                        <span className="header-split__down">
+                            {`Account & Lists`}
+                            <BsCaretDownFill className="subheader-arrow" />
+                        </span>
                     </div>
                 </div>
 

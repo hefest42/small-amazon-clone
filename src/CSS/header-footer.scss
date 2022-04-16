@@ -22,6 +22,7 @@
         padding: 0 0.7rem;
         border: 1px solid #111;
         text-decoration: none;
+        cursor: pointer;
 
         &:hover {
             border: 1px solid #fff;
@@ -163,7 +164,7 @@
     }
 
     &-item {
-        padding: 0.5rem 0.5rem;
+        padding: 0.3rem 0.5rem;
         border: 1px solid rgb(35, 47, 62);
         cursor: pointer;
         margin-left: 0.5rem;
