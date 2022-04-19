@@ -1,7 +1,7 @@
 import React from "react";
 
 const BackDrop = () => {
-    return <div></div>;
+    return <div className="backdrop"></div>;
 };
 
 export default BackDrop;
