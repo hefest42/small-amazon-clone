@@ -3,6 +3,8 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsCaretDownFill } from "react-icons/bs";
 
+import BrowsingHistory from "./BrowsingHistory";
+
 const SubHeader = () => {
     return (
         <div className="subheader">
@@ -27,6 +29,7 @@ const SubHeader = () => {
                 <div className="subheader-item center">
                     Browsing History
                     <BsCaretDownFill className="subheader-arrow" />
+                    <BrowsingHistory />
                 </div>
                 <div className="subheader-item center">Sell</div>
             </div>
