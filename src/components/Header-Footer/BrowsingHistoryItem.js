@@ -6,7 +6,7 @@ const BrowsingHistoryItem = ({ imageLink }) => {
     const [showRemove, setShowRemove] = useState(false);
 
     return (
-        <div className="history-item center-column" onMouseEnter={() => setShowRemove(true)} on onMouseLeave={() => setShowRemove(false)}>
+        <div className="history-item center-column" onMouseEnter={() => setShowRemove(true)} onMouseLeave={() => setShowRemove(false)}>
             <div className="history-item__image center">
                 <img src={imageLink} alt="keyboard" />
             </div>
@@ -32,10 +32,3 @@ const BrowsingHistoryItem = ({ imageLink }) => {
 };
 
 export default BrowsingHistoryItem;
-
-{
-    /* <div className="history-line__dot"></div>
-<div className="history-line__x center">
-<AiOutlineClose />
-</div> */
-}

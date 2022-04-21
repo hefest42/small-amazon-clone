@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsCaretDownFill } from "react-icons/bs";
 
 import BrowsingHistory from "./BrowsingHistory";
 
-const SubHeader = () => {
+const SubHeader = ({ changeBackdrop }) => {
+    const [showBrowseHistory, setShowBrowseHistory] = useState(false);
+
+    const showBrowseHistoryHandler = () => {
+        setShowBrowseHistory(true);
+    };
+
+    const hideBrowseHistoryHandler = () => {};
+
     return (
         <>
             <div className="subheader">
@@ -27,7 +35,7 @@ const SubHeader = () => {
 
                     <div className="subheader-item center">Registry</div>
 
-                    <div className="subheader-item center">
+                    <div className="subheader-item center" onMouseEnter={showBrowseHistoryHandler} onMouseLeave={hideBrowseHistoryHandler}>
                         Browsing History
                         <BsCaretDownFill className="subheader-arrow" />
                     </div>
@@ -35,7 +43,7 @@ const SubHeader = () => {
                     <div className="subheader-item center">Sell</div>
                 </div>
             </div>
-            <BrowsingHistory />
+            {showBrowseHistory && <BrowsingHistory />}
         </>
     );
 };

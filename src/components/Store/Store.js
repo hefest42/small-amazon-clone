@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
 import PageWrapper from "../UI/PageWrapper";
 import Header from "../Header-Footer/Header";
 import SubHeader from "../Header-Footer/SubHeader";
 import BackDrop from "../UI/BackDrop";
-import BrowsingHistory from "../Header-Footer/BrowsingHistory";
 
 const Store = () => {
+    const [showBackdrop, setShowBackdrop] = useState(false);
+
     return (
         <PageWrapper>
             <Header />
-            <SubHeader />
-            <BackDrop />
+            <SubHeader changeBackdrop={setShowBackdrop} />
+            {showBackdrop && <BackDrop />}
         </PageWrapper>
     );
 };
