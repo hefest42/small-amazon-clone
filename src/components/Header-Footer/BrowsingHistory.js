@@ -5,7 +5,7 @@ import BrowsingHistoryItem from "./BrowsingHistoryItem";
 // CSS in header-footer
 const BrowsingHistory = () => {
     return (
-        <div className="history">
+        <>
             <div className="history-inner">
                 <div className="history-inner__edit">
                     <span>Your Browsing History</span>
@@ -22,7 +22,7 @@ const BrowsingHistory = () => {
                     <BrowsingHistoryItem imageLink="https://m.media-amazon.com/images/I/61IiCJ7QggS._AC_SX466_.jpg" />
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
