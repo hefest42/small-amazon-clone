@@ -42,16 +42,18 @@ const SubHeader = ({ changeBackdrop }) => {
 
                     <div className="subheader-item center">Registry</div>
 
-                    <div className="subheader-item center" onMouseEnter={() => setShowMenu(true)}>
-                        Browsing History
-                        <BsCaretDownFill className="subheader-arrow" />
+                    <div className="subheader-container" onMouseLeave={() => setShowMenu(false)}>
+                        <div className="subheader-item center" onMouseEnter={() => setShowMenu(true)}>
+                            Browsing History
+                            <BsCaretDownFill className="subheader-arrow" />
+                        </div>
                     </div>
 
                     <div className="subheader-item center">Sell</div>
                 </div>
             </div>
             {showBrowseHistory && (
-                <div className="history" onMouseLeave={() => setShowMenu(false)}>
+                <div className="history" onMouseEnter={() => setShowMenu(true)} onMouseLeave={() => setShowMenu(false)}>
                     <BrowsingHistory />
                 </div>
             )}

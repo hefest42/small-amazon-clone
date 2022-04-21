@@ -145,6 +145,7 @@
 }
 
 .subheader {
+    position: relative;
     background-color: rgb(35, 47, 62);
     color: #fff;
     width: 100%;
@@ -154,12 +155,22 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    z-index: 200;
 
     &-inner {
+        height: 100%;
         margin-left: 0.5rem;
 
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+    }
+
+    &-container {
+        height: 100%;
+
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
 
