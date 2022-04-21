@@ -10,8 +10,14 @@ const bannerLinks = [
 
 const FrontPage = () => {
     return (
-        <div className="front">
-            <div className="front-banner"></div>
+        <div className="front center-column">
+            <div className="front-banner center">
+                {bannerLinks.map((link, i) => (
+                    <img key={i} src={link} alt="banner" />
+                ))}
+            </div>
+
+            <div className="front-products"></div>
         </div>
     );
 };
