@@ -6,8 +6,8 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const bannerLinks = [
     "https://m.media-amazon.com/images/I/61DUO0NqyyL._SX3740_.jpg",
-    "https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3740_.jpg",
     "https://m.media-amazon.com/images/I/61jovjd+f9L._SX3740_.jpg",
+    "https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3740_.jpg",
 ];
 
 const FrontPage = () => {
@@ -18,7 +18,7 @@ const FrontPage = () => {
     const moveBannerLeft = () => setSlideNumber((state) => (state === 0 ? -2 : state + 1));
 
     return (
-        <div className="front center-column">
+        <div className="front ">
             <div className="front-banner center">
                 <div className="front-banner__arrows space-between">
                     <div className="front-banner__arrows-left center" onClick={moveBannerLeft}>
@@ -30,34 +30,34 @@ const FrontPage = () => {
                 </div>
 
                 {bannerLinks.map((image, i) => (
-                    <img
-                        key={i}
-                        src={image}
-                        alt="banner"
-                        style={{
-                            transform: `translateX(${(i + slideNumber) * 100}%)`,
-                        }}
-                    />
+                    <div className="front-banner__image" key={i} style={{ transform: `translateX(${(i + slideNumber) * 100}%)` }}>
+                        <img src={image} alt="banner" />
+                    </div>
                 ))}
             </div>
 
-            {/* <div className="front-products">
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-                <Product image="" />
-            </div> */}
+            <div className="front-products">
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+                <Product />
+            </div>
         </div>
     );
 };
