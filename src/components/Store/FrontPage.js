@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Product from "./Product";
+
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 const bannerLinks = [
     "https://m.media-amazon.com/images/I/61DUO0NqyyL._SX3740_.jpg",
@@ -9,22 +11,37 @@ const bannerLinks = [
 ];
 
 const FrontPage = () => {
+    const [slideNumber, setSlideNumber] = useState(0);
+
+    const moveBannerRight = () => setSlideNumber((state) => (state === -2 ? 0 : state - 1));
+
+    const moveBannerLeft = () => setSlideNumber((state) => (state === 0 ? -2 : state + 1));
+
     return (
         <div className="front center-column">
             <div className="front-banner center">
-                {bannerLinks.map((link, i) => (
+                <div className="front-banner__arrows space-between">
+                    <div className="front-banner__arrows-left center" onClick={moveBannerLeft}>
+                        <BsChevronLeft />
+                    </div>
+                    <div className="front-banner__arrows-right center" onClick={moveBannerRight}>
+                        <BsChevronRight />
+                    </div>
+                </div>
+
+                {bannerLinks.map((image, i) => (
                     <img
                         key={i}
-                        src={link}
+                        src={image}
                         alt="banner"
                         style={{
-                            transfrom: `translateX(${i * 100}%)`,
+                            transform: `translateX(${(i + slideNumber) * 100}%)`,
                         }}
                     />
                 ))}
             </div>
 
-            <div className="front-products">
+            {/* <div className="front-products">
                 <Product image="" />
                 <Product image="" />
                 <Product image="" />
@@ -40,7 +57,7 @@ const FrontPage = () => {
                 <Product image="" />
                 <Product image="" />
                 <Product image="" />
-            </div>
+            </div> */}
         </div>
     );
 };
