@@ -24,7 +24,23 @@ const FrontPage = () => {
                 ))}
             </div>
 
-            <div className="front-products"></div>
+            <div className="front-products">
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+                <Product image="" />
+            </div>
         </div>
     );
 };
