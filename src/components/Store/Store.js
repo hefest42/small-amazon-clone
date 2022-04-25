@@ -5,6 +5,7 @@ import Header from "../Header-Footer/Header";
 import SubHeader from "../Header-Footer/SubHeader";
 import BackDrop from "../UI/BackDrop";
 import FrontPage from "./FrontPage";
+import SideCartColumn from "./SideCartColumn";
 
 const Store = () => {
     const [showBackdrop, setShowBackdrop] = useState(false);
@@ -22,6 +23,7 @@ const Store = () => {
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
             <FrontPage addItemToCart={addItemToCartHandler} />
+            <SideCartColumn changeBackdrop={setShowBackdrop} />
         </PageWrapper>
     );
 };

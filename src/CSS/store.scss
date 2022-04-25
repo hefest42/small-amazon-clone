@@ -3,6 +3,7 @@
 .front {
     position: relative;
     width: 98%;
+    height: auto;
     z-index: 50;
 
     &-banner {
@@ -98,6 +99,17 @@
             height: 100%;
         }
     }
+}
+
+.cartColumn {
+    position: fixed;
+    top: 0rem;
+    right: 0rem;
+    background-color: white;
+    width: 2rem;
+    height: 100%;
+    z-index: 99;
+    border-left: 2px solid $main-blue;
 }
 
 //! fix image scaling

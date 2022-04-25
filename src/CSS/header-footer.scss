@@ -7,7 +7,7 @@
     width: 100%;
     height: 4rem;
     text-decoration: none;
-    z-index: 100;
+    z-index: 200;
 
     &-inner {
         width: 98%;
@@ -199,7 +199,7 @@
 }
 
 .history {
-    position: fixed;
+    position: absolute;
     top: 6rem;
     left: 0;
     background-color: #fff;
