@@ -110,6 +110,56 @@
     height: 100%;
     z-index: 99;
     border-left: 2px solid $main-blue;
+    transition: all 0.2s linear;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    &-inner {
+        position: relative;
+        top: 7rem;
+        width: 90%;
+        height: 20rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &__left {
+            width: 5px;
+            height: 15rem;
+            margin-left: 5px;
+
+            div {
+                background-color: $main-orange;
+                width: 100%;
+                height: 5rem;
+                border-top: 1px solid black;
+            }
+        }
+
+        &__right {
+            width: 5rem;
+
+            div {
+                width: 100%;
+                height: 3.5rem;
+                margin-top: 1.5rem;
+
+                img {
+                    object-fit: contain;
+                    width: 90%;
+                    height: 90%;
+                }
+            }
+        }
+    }
+
+    &-active {
+        width: 7rem;
+        transition: all 0.2s linear;
+    }
 }
 
 //! fix image scaling
