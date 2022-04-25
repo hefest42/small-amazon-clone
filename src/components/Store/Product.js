@@ -1,14 +1,23 @@
 import React from "react";
 
-const Product = () => {
+const Product = ({ product, addItem }) => {
+    const cartItemHandler = () => {
+        addItem(product);
+    };
+
     return (
         <div className="product">
             <div className="product-image">
-                <img src="https://m.media-amazon.com/images/I/719efVQ1tJL._AC_SY679_.jpg" alt="product" />
+                <img src={product.imageUrl} alt="product" />
             </div>
-            <div className="product-title center">Logitech 403</div>
+            <div className="product-title center-column">
+                <span>{product.name}</span>
+                <span>${product.price}</span>
+            </div>
             <div className="product-button  center">
-                <button className="button-orange">Add to Cart</button>
+                <button className="button-orange" onClick={cartItemHandler}>
+                    Add to Cart
+                </button>
             </div>
         </div>
     );

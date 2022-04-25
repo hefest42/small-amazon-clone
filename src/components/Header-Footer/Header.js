@@ -6,7 +6,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart, BsCaretDownFill } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
-const Header = () => {
+const Header = ({ cartItems }) => {
     return (
         <header className="header center">
             <div className="header-inner">
@@ -63,7 +63,7 @@ const Header = () => {
                 <div className="header-part ">
                     <div className="header-cart">
                         <BsCart />
-                        <span className="header-cart__number">0</span>
+                        <span className="header-cart__number">{cartItems.length}</span>
                     </div>
                 </div>
             </div>

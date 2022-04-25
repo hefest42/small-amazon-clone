@@ -8,13 +8,20 @@ import FrontPage from "./FrontPage";
 
 const Store = () => {
     const [showBackdrop, setShowBackdrop] = useState(false);
+    const [cart, setCart] = useState([]);
+
+    const addItemToCartHandler = (item) => {
+        if (cart.filter((cartItem) => cartItem.id === item.id).length > 0) return;
+
+        setCart((state) => [...state, item]);
+    };
 
     return (
         <PageWrapper>
-            <Header />
+            <Header cartItems={cart} />
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
-            <FrontPage />
+            <FrontPage addItemToCart={addItemToCartHandler} />
         </PageWrapper>
     );
 };
