@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IoIosCloseCircle } from "react-icons/io";
 
 const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
     const [isCartFocused, setIsCartFocused] = useState(false);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const mouseEnterHandler = () => {
         setIsCartFocused(true);
@@ -15,6 +16,12 @@ const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
         changeBackdrop(false);
     };
 
+    useEffect(() => {
+        const price = cartItems.map((item) => +item.price).reduce((a, b) => a + b, 0);
+
+        setTotalPrice(price);
+    }, [cartItems]);
+
     return (
         <div
             className={isCartFocused ? "cartColumn cartColumn-active" : "cartColumn"}
@@ -22,6 +29,13 @@ const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
             onMouseLeave={mouseLeaveHandler}
         >
             <div className="cartColumn-inner">
+                {isCartFocused && (
+                    <div className="cartColumn-price">
+                        <p>Total Price:</p>
+                        <p>${totalPrice}</p>
+                    </div>
+                )}
+
                 {cartItems.map((item, i) => (
                     <div className="cartColumn-item" key={item.id}>
                         {isCartFocused && (
