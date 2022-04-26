@@ -2,34 +2,29 @@ import React, { useEffect, useState } from "react";
 
 import { IoIosCloseCircle } from "react-icons/io";
 
-const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
-    const [isCartFocused, setIsCartFocused] = useState(false);
+const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart, showCart, showCartHandler }) => {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const mouseEnterHandler = () => {
-        setIsCartFocused(true);
+        showCartHandler(true);
         changeBackdrop(true);
     };
 
     const mouseLeaveHandler = () => {
-        setIsCartFocused(false);
+        showCartHandler(false);
         changeBackdrop(false);
     };
 
     useEffect(() => {
         const price = cartItems.map((item) => +item.price).reduce((a, b) => a + b, 0);
 
-        setTotalPrice(price);
+        setTotalPrice(price.toFixed(2));
     }, [cartItems]);
 
     return (
-        <div
-            className={isCartFocused ? "cartColumn cartColumn-active" : "cartColumn"}
-            onMouseEnter={mouseEnterHandler}
-            onMouseLeave={mouseLeaveHandler}
-        >
+        <div className={showCart ? "cartColumn cartColumn-active" : "cartColumn"} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
             <div className="cartColumn-inner">
-                {isCartFocused && (
+                {showCart && (
                     <div className="cartColumn-price">
                         <p>Total Price:</p>
                         <p>${totalPrice}</p>
@@ -38,7 +33,7 @@ const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
 
                 {cartItems.map((item, i) => (
                     <div className="cartColumn-item" key={item.id}>
-                        {isCartFocused && (
+                        {showCart && (
                             <div className="cartColumn-item__line">
                                 <div className="cartColumn-item__line-close center">
                                     <IoIosCloseCircle onClick={() => removeItemFromCart(item)} />

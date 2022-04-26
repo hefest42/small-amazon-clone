@@ -9,6 +9,7 @@ import SideCartColumn from "./SideCartColumn";
 
 const Store = () => {
     const [showBackdrop, setShowBackdrop] = useState(false);
+    const [isCartFocused, setIsCartFocused] = useState(false);
     const [cart, setCart] = useState([]);
 
     const addItemToCartHandler = (item) => {
@@ -27,11 +28,19 @@ const Store = () => {
 
     return (
         <PageWrapper>
-            <Header cartItems={cart} />
+            <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} />
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
             <FrontPage addItemToCart={addItemToCartHandler} />
-            {cart.length > 0 && <SideCartColumn changeBackdrop={setShowBackdrop} cartItems={cart} removeItemFromCart={removeItemFromCartHandler} />}
+            {cart.length > 0 && (
+                <SideCartColumn
+                    changeBackdrop={setShowBackdrop}
+                    cartItems={cart}
+                    removeItemFromCart={removeItemFromCartHandler}
+                    showCart={isCartFocused}
+                    showCartHandler={setIsCartFocused}
+                />
+            )}
         </PageWrapper>
     );
 };

@@ -6,7 +6,19 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart, BsCaretDownFill } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
-const Header = ({ cartItems }) => {
+const Header = ({ cartItems, showCartHandler, changeBackdrop }) => {
+    const mouseEnterCartHandler = () => {
+        if (cartItems.length > 0) {
+            showCartHandler(true);
+            changeBackdrop(true);
+        }
+    };
+
+    const mouseLeaveCartHandler = () => {
+        showCartHandler(false);
+        changeBackdrop(false);
+    };
+
     return (
         <header className="header center">
             <div className="header-inner">
@@ -60,8 +72,8 @@ const Header = ({ cartItems }) => {
                     </div>
                 </div>
 
-                <div className="header-part ">
-                    <div className="header-cart">
+                <div className="header-part">
+                    <div className="header-cart" onMouseEnter={mouseEnterCartHandler} onMouseLeave={mouseLeaveCartHandler}>
                         <BsCart />
                         <span className="header-cart__number">{cartItems.length}</span>
                     </div>
