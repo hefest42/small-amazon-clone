@@ -72,8 +72,8 @@ const Header = ({ cartItems, showCartHandler, changeBackdrop }) => {
                     </div>
                 </div>
 
-                <div className="header-part">
-                    <div className="header-cart" onMouseEnter={mouseEnterCartHandler} onMouseLeave={mouseLeaveCartHandler}>
+                <div className="header-part" onMouseEnter={mouseEnterCartHandler} onMouseLeave={mouseLeaveCartHandler}>
+                    <div className="header-cart">
                         <BsCart />
                         <span className="header-cart__number">{cartItems.length}</span>
                     </div>

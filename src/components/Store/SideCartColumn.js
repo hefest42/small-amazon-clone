@@ -33,13 +33,12 @@ const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart, showCar
 
                 {cartItems.map((item, i) => (
                     <div className="cartColumn-item" key={item.id}>
-                        {showCart && (
-                            <div className="cartColumn-item__line">
-                                <div className="cartColumn-item__line-close center">
-                                    <IoIosCloseCircle onClick={() => removeItemFromCart(item)} />
-                                </div>
+                        <div className="cartColumn-item__line">
+                            <div className="cartColumn-item__line-close center">
+                                {showCart && <IoIosCloseCircle onClick={() => removeItemFromCart(item)} />}
                             </div>
-                        )}
+                        </div>
+
                         <div className="cartColumn-item__product center">
                             <img src={item.imageUrl} alt="product" />
                         </div>
