@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import PageWrapper from "../UI/PageWrapper";
 import Header from "../Header-Footer/Header";
@@ -17,13 +17,21 @@ const Store = () => {
         setCart((state) => [...state, item]);
     };
 
+    const removeItemFromCartHandler = (item) => {
+        setCart((state) => state.filter((cartItem) => cartItem.id !== item.id));
+    };
+
+    useEffect(() => {
+        if (cart.length === 0) setShowBackdrop(false);
+    }, [cart]);
+
     return (
         <PageWrapper>
             <Header cartItems={cart} />
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
             <FrontPage addItemToCart={addItemToCartHandler} />
-            <SideCartColumn changeBackdrop={setShowBackdrop} />
+            {cart.length > 0 && <SideCartColumn changeBackdrop={setShowBackdrop} cartItems={cart} removeItemFromCart={removeItemFromCartHandler} />}
         </PageWrapper>
     );
 };

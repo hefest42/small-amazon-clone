@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const SideCartColumn = ({ changeBackdrop }) => {
+import { IoIosCloseCircle } from "react-icons/io";
+
+const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart }) => {
     const [isCartFocused, setIsCartFocused] = useState(false);
 
     const mouseEnterHandler = () => {
@@ -20,28 +22,20 @@ const SideCartColumn = ({ changeBackdrop }) => {
             onMouseLeave={mouseLeaveHandler}
         >
             <div className="cartColumn-inner">
-                {isCartFocused && (
-                    <div className="cartColumn-inner__left">
-                        <div></div>
+                {cartItems.map((item, i) => (
+                    <div className="cartColumn-item" key={item.id}>
+                        {isCartFocused && (
+                            <div className="cartColumn-item__line">
+                                <div className="cartColumn-item__line-close center">
+                                    <IoIosCloseCircle onClick={() => removeItemFromCart(item)} />
+                                </div>
+                            </div>
+                        )}
+                        <div className="cartColumn-item__product center">
+                            <img src={item.imageUrl} alt="product" />
+                        </div>
                     </div>
-                )}
-                <div className="cartColumn-inner__right">
-                    <div className="center">
-                        <img src="https://m.media-amazon.com/images/I/61IiCJ7QggS._AC_SX466_.jpg" alt="product" />
-                    </div>
-                    <div className="center">
-                        <img src="https://m.media-amazon.com/images/I/91G9etn8L4L._AC_SY355_.jpg" alt="product" />
-                    </div>
-                    <div className="center">
-                        <img src="https://m.media-amazon.com/images/I/81oORaahKZL._AC_SX355_.jpg" alt="product" />
-                    </div>
-                    <div className="center">
-                        <img src="https://m.media-amazon.com/images/I/61NrWLtBXFL._AC_SY450_.jpg" alt="product" />
-                    </div>
-                    <div className="center">
-                        <img src="https://m.media-amazon.com/images/I/51K1mE5uVyL._AC_SY450_.jpg" alt="product" />
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     );

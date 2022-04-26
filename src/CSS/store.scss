@@ -107,10 +107,11 @@
     right: 0rem;
     background-color: white;
     width: 2rem;
-    height: 100%;
+    min-height: 100vh;
+    max-height: auto;
     z-index: 99;
     border-left: 2px solid $main-blue;
-    transition: all 0.2s linear;
+    transition: all 0.05s linear;
 
     display: flex;
     justify-content: center;
@@ -123,42 +124,87 @@
         height: 20rem;
 
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
+    }
 
-        &__left {
-            width: 5px;
-            height: 15rem;
-            margin-left: 5px;
+    &-item {
+        width: 100%;
+        height: 5rem;
+        margin-top: 2rem;
 
-            div {
-                background-color: $main-orange;
-                width: 100%;
-                height: 5rem;
-                border-top: 1px solid black;
-            }
-        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &__right {
+        &__product {
             width: 5rem;
+            height: 100%;
 
-            div {
+            img {
+                object-fit: contain;
                 width: 100%;
-                height: 3.5rem;
-                margin-top: 1.5rem;
-
-                img {
-                    object-fit: contain;
-                    width: 90%;
-                    height: 90%;
-                }
+                height: 100%;
             }
         }
     }
+}
 
-    &-active {
-        width: 7rem;
-        transition: all 0.2s linear;
+.cartColumn-active {
+    width: 7rem;
+    transition: all 0.2s linear;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cartColumn {
+        &-item {
+            min-height: 6rem;
+
+            &__line {
+                position: relative;
+                background-color: $main-orange;
+                width: 10px;
+                height: 100%;
+
+                &-close {
+                    position: absolute;
+                    top: 35%;
+                    left: -95%;
+                    width: 30px;
+                    height: 30px;
+
+                    svg {
+                        color: $dark-gray;
+                        width: 20px;
+                        height: 20px;
+                        cursor: pointer;
+
+                        &:hover {
+                            width: 25px;
+                            height: 25px;
+                        }
+                    }
+                }
+            }
+
+            &__product {
+                width: 5rem;
+                height: 100%;
+
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
     }
 }
 
