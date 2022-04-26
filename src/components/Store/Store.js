@@ -23,7 +23,10 @@ const Store = () => {
     };
 
     useEffect(() => {
-        if (cart.length === 0) setShowBackdrop(false);
+        if (cart.length === 0) {
+            setIsCartFocused(false);
+            setShowBackdrop(false);
+        }
     }, [cart]);
 
     return (
