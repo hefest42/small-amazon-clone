@@ -35,13 +35,13 @@ const Store = () => {
         <PageWrapper>
             <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} />
             <SubHeader changeBackdrop={setShowBackdrop} />
+            {showBackdrop && <BackDrop />}
 
             <Routes>
                 <Route
                     path=""
                     element={
                         <>
-                            {showBackdrop && <BackDrop />}
                             <FrontPage addItemToCart={addItemToCartHandler} />
                             {cart.length > 0 && (
                                 <SideCartColumn
