@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import PageWrapper from "../UI/PageWrapper";
 import Header from "../Header-Footer/Header";
@@ -6,6 +7,7 @@ import SubHeader from "../Header-Footer/SubHeader";
 import BackDrop from "../UI/BackDrop";
 import FrontPage from "./FrontPage";
 import SideCartColumn from "./SideCartColumn";
+import Cart from "../Cart/Cart";
 
 const Store = () => {
     const [showBackdrop, setShowBackdrop] = useState(false);
@@ -33,17 +35,29 @@ const Store = () => {
         <PageWrapper>
             <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} />
             <SubHeader changeBackdrop={setShowBackdrop} />
-            {showBackdrop && <BackDrop />}
-            <FrontPage addItemToCart={addItemToCartHandler} />
-            {cart.length > 0 && (
-                <SideCartColumn
-                    changeBackdrop={setShowBackdrop}
-                    cartItems={cart}
-                    removeItemFromCart={removeItemFromCartHandler}
-                    showCart={isCartFocused}
-                    showCartHandler={setIsCartFocused}
+
+            <Routes>
+                <Route
+                    path=""
+                    element={
+                        <>
+                            {showBackdrop && <BackDrop />}
+                            <FrontPage addItemToCart={addItemToCartHandler} />
+                            {cart.length > 0 && (
+                                <SideCartColumn
+                                    changeBackdrop={setShowBackdrop}
+                                    cartItems={cart}
+                                    removeItemFromCart={removeItemFromCartHandler}
+                                    showCart={isCartFocused}
+                                    showCartHandler={setIsCartFocused}
+                                />
+                            )}
+                        </>
+                    }
                 />
-            )}
+
+                <Route path="cart" element={<Cart />} />
+            </Routes>
         </PageWrapper>
     );
 };

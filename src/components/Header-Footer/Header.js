@@ -72,12 +72,14 @@ const Header = ({ cartItems, showCartHandler, changeBackdrop }) => {
                     </div>
                 </div>
 
-                <div className="header-part" onMouseEnter={mouseEnterCartHandler} onMouseLeave={mouseLeaveCartHandler}>
-                    <div className="header-cart">
-                        <BsCart />
-                        <span className="header-cart__number">{cartItems.length}</span>
+                <Link to="/store/cart">
+                    <div className="header-part" onMouseEnter={mouseEnterCartHandler} onMouseLeave={mouseLeaveCartHandler}>
+                        <div className="header-cart">
+                            <BsCart />
+                            <span className="header-cart__number">{cartItems.length}</span>
+                        </div>
                     </div>
-                </div>
+                </Link>
             </div>
         </header>
     );
