@@ -9,6 +9,9 @@ import FrontPage from "./FrontPage";
 import SideCartColumn from "./SideCartColumn";
 import Cart from "../Cart/Cart";
 
+// project id
+// clone-c99fe
+
 const Store = ({ loggedInAcc }) => {
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [isCartFocused, setIsCartFocused] = useState(false);
@@ -31,11 +34,9 @@ const Store = ({ loggedInAcc }) => {
         }
     }, [cart]);
 
-    console.log(loggedInAcc);
-
     return (
         <PageWrapper>
-            <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} />
+            <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} account={loggedInAcc} />
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
 

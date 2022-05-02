@@ -6,7 +6,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart, BsCaretDownFill } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
-const Header = ({ cartItems, showCartHandler, changeBackdrop }) => {
+const Header = ({ cartItems, showCartHandler, changeBackdrop, account }) => {
     const mouseEnterCartHandler = () => {
         if (cartItems.length > 0) {
             showCartHandler(true);
@@ -55,15 +55,19 @@ const Header = ({ cartItems, showCartHandler, changeBackdrop }) => {
                     </div>
                 </div>
 
-                <div className="header-split header-part">
-                    <div className="header-split__right">
-                        <span className="header-split__top">Hello, Nemanja</span>
-                        <span className="header-split__down">
-                            {`Account & Lists`}
-                            <BsCaretDownFill className="subheader-arrow" />
-                        </span>
+                {account && (
+                    <div className="header-split header-part">
+                        <div className="header-split__right">
+                            <span className="header-split__top">{`Hello, ${account.name}`}</span>
+                            <span className="header-split__down">
+                                {`Account & Lists`}
+                                <BsCaretDownFill className="subheader-arrow" />
+                            </span>
+                        </div>
                     </div>
-                </div>
+                )}
+
+                {!account && <div className="header-split header-part">Log In</div>}
 
                 <div className="header-split header-part">
                     <div className="header-split__right">
