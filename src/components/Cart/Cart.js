@@ -2,11 +2,18 @@ import React from "react";
 
 import CartItem from "./CartItem";
 
-const Cart = () => {
+const Cart = ({ cartItems, removeItemFromCart }) => {
+    const totalPrice = cartItems
+        .map((item) => +item.price)
+        .reduce((a, b) => a + b, 0)
+        .toFixed(2);
+
     return (
         <div className="cart">
             <div className="cart-left">
-                <CartItem />
+                {cartItems.map((item) => (
+                    <CartItem item={item} removeItem={removeItemFromCart} />
+                ))}
             </div>
 
             <div className="cart-right center-column">
@@ -14,7 +21,7 @@ const Cart = () => {
                     <div className="cart-right__title">Cart</div>
                     <div className="cart-right__total space-between">
                         <div>Total:</div>
-                        <div>$99.99</div>
+                        <div>${totalPrice}</div>
                     </div>
                     <button className="button-orange">Buy</button>
                 </div>
