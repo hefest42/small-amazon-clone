@@ -6,10 +6,10 @@ import LogInPassword from "./LogInPassword";
 import PageWrapper from "../UI/PageWrapper";
 import SmallFooter from "./SmallFooter";
 
-const LogIn = () => {
+const LogIn = ({ logInAccount }) => {
     const [stepper, setStepper] = useState(1);
-    const [allAccounts, setAllAccounts] = useState([]);
-    const [userAccount, setUserAccount] = useState("");
+    const [allAccounts, setAllAccounts] = useState([]); // getting every account from firebase
+    const [userAccount, setUserAccount] = useState(""); // filtering down to one account with the inputed email
 
     useEffect(() => {
         const getAccounts = async () => {
@@ -45,7 +45,7 @@ const LogIn = () => {
             </div>
 
             {stepper === 1 && <LogInEmail accounts={allAccounts} getUserAccount={setUserAccount} changeStep={setStepper} />}
-            {stepper === 2 && <LogInPassword changeStep={setStepper} account={userAccount} />}
+            {stepper === 2 && <LogInPassword changeStep={setStepper} account={userAccount} logIn={logInAccount} />}
             <SmallFooter />
         </PageWrapper>
     );

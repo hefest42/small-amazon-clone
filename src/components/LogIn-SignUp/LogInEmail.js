@@ -9,19 +9,19 @@ const LogInEmail = ({ accounts, getUserAccount, changeStep }) => {
     const [errorMessage, setErrorMessage] = useState("");
     const emailRef = useRef();
 
-    const setErrorMessageHandler = msg => {
+    const setErrorMessageHandler = (msg) => {
         setShowError(true);
         setErrorMessage(msg);
 
         emailRef.current.value = "";
     };
 
-    const emailSubmitHandler = e => {
+    const emailSubmitHandler = (e) => {
         e.preventDefault();
 
         const email = emailRef.current.value;
 
-        const account = accounts.filter(acc => acc.email === email);
+        const account = accounts.filter((acc) => acc.email === email);
 
         if (email === "") {
             setErrorMessageHandler("Please input a email address.");

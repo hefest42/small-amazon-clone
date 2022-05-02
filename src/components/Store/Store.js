@@ -9,7 +9,7 @@ import FrontPage from "./FrontPage";
 import SideCartColumn from "./SideCartColumn";
 import Cart from "../Cart/Cart";
 
-const Store = () => {
+const Store = ({ loggedInAcc }) => {
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [isCartFocused, setIsCartFocused] = useState(false);
     const [cart, setCart] = useState([]);
@@ -30,6 +30,8 @@ const Store = () => {
             setShowBackdrop(false);
         }
     }, [cart]);
+
+    console.log(loggedInAcc);
 
     return (
         <PageWrapper>

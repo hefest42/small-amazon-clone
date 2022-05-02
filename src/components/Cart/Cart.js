@@ -23,7 +23,7 @@ const Cart = ({ cartItems, removeItemFromCart }) => {
                 <>
                     <div className="cart-left">
                         {cartItems.map((item) => (
-                            <CartItem item={item} removeItem={removeItemFromCart} />
+                            <CartItem key={item.id} item={item} removeItem={removeItemFromCart} />
                         ))}
                     </div>
 
