@@ -1,18 +1,18 @@
 import React from "react";
 
 const CartItem = ({ item, removeItem }) => {
-    const updateUserInfoHandler = async () => {
-        console.log("test");
-        const response = await fetch("https://clone-c99fe-default-rtdb.europe-west1.firebasedatabase.app/accounts/-N13fimkeDDqtLUgU8y2.json", {
-            method: "PATCH",
-            body: JSON.stringify({ password: "123456" }),
-            headers: {
-                "CONTENT-TYPE": "application/json",
-            },
-        });
+    // const updateUserInfoHandler = async () => {
+    //     console.log("test");
+    //     const response = await fetch("https://clone-c99fe-default-rtdb.europe-west1.firebasedatabase.app/accounts/-N13fimkeDDqtLUgU8y2.json", {
+    //         method: "PATCH",
+    //         body: JSON.stringify({ name: "Nemanja" }),
+    //         headers: {
+    //             "CONTENT-TYPE": "application/json",
+    //         },
+    //     });
 
-        console.log(response);
-    };
+    //     console.log(response);
+    // };
 
     return (
         <div className="cartItem center">
@@ -34,7 +34,6 @@ const CartItem = ({ item, removeItem }) => {
                                 className="button-orange"
                                 onClick={() => {
                                     removeItem(item);
-                                    updateUserInfoHandler();
                                 }}
                             >
                                 Remove from Cart
