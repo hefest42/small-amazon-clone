@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import PageWrapper from "../UI/PageWrapper";
 import Header from "../Header-Footer/Header";
@@ -16,6 +16,7 @@ const Store = ({ loggedInAcc }) => {
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [isCartFocused, setIsCartFocused] = useState(false);
     const [cart, setCart] = useState([]);
+    const location = useLocation();
 
     const addItemToCartHandler = (item) => {
         if (cart.filter((cartItem) => cartItem.id === item.id).length > 0) return;
@@ -32,7 +33,12 @@ const Store = ({ loggedInAcc }) => {
             setIsCartFocused(false);
             setShowBackdrop(false);
         }
-    }, [cart]);
+
+        if (location.pathname.includes("cart")) {
+            setIsCartFocused(false);
+            setShowBackdrop(false);
+        }
+    }, [cart, location]);
 
     return (
         <PageWrapper>

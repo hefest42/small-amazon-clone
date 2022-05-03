@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import { IoIosCloseCircle } from "react-icons/io";
 
 const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart, showCart, showCartHandler }) => {
@@ -26,6 +28,10 @@ const SideCartColumn = ({ changeBackdrop, cartItems, removeItemFromCart, showCar
             <div className="cartColumn-inner">
                 {showCart && (
                     <div className="cartColumn-price">
+                        <div className="cartColumn-price__link">
+                            <Link to="cart">View Your Cart</Link>
+                        </div>
+
                         <p>Total Price:</p>
                         <p>${totalPrice}</p>
                     </div>

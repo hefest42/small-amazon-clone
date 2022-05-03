@@ -167,6 +167,18 @@
             width: 100%;
             border-bottom: 2px solid $main-blue;
 
+            &__link {
+                margin-bottom: 2rem;
+
+                a {
+                    color: $input-border;
+
+                    &:hover {
+                        color: $light-gray;
+                    }
+                }
+            }
+
             p {
                 margin: 0.2rem 0;
             }
