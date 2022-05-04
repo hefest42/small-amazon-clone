@@ -5,10 +5,12 @@ import { AiFillEdit } from "react-icons/ai";
 
 import PageWrapper from "../UI/PageWrapper";
 import ChangePassword from "./ChangePassword";
+import ChangeEmail from "./ChangeEmail";
 
 //TODO if no account redirect back to the log in or store
 const Account = ({ loggedInAcc }) => {
-    const [showChanePassword, setShowChangePassword] = useState(false);
+    const [showChangePassword, setShowChangePassword] = useState(false);
+    const [showChangeEmail, setShowChangeEmail] = useState(false);
 
     return (
         <PageWrapper>
@@ -31,7 +33,7 @@ const Account = ({ loggedInAcc }) => {
                         <div>
                             <span>test@test.com</span>
                             <span>
-                                <AiFillEdit />
+                                <AiFillEdit onClick={() => setShowChangeEmail(true)} />
                             </span>
                         </div>
                     </div>
@@ -46,7 +48,8 @@ const Account = ({ loggedInAcc }) => {
                     </div>
                 </div>
             </div>
-            {showChanePassword && <ChangePassword changeShowPassword={setShowChangePassword} />}
+            {showChangePassword && <ChangePassword changeShowPassword={setShowChangePassword} />}
+            {showChangeEmail && <ChangeEmail changeShowEmail={setShowChangeEmail} />}
         </PageWrapper>
     );
 };
