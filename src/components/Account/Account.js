@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useNavigate, Link } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 
 import PageWrapper from "../UI/PageWrapper";
+import ChangePassword from "./ChangePassword";
 
 //TODO if no account redirect back to the log in or store
 const Account = ({ loggedInAcc }) => {
+    const [showChanePassword, setShowChangePassword] = useState(false);
+
     return (
         <PageWrapper>
             <div className="account center-column">
@@ -37,12 +40,13 @@ const Account = ({ loggedInAcc }) => {
                         <div>
                             <span>********</span>
                             <span>
-                                <AiFillEdit />
+                                <AiFillEdit onClick={() => setShowChangePassword(true)} />
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
+            {showChanePassword && <ChangePassword changeShowPassword={setShowChangePassword} />}
         </PageWrapper>
     );
 };
