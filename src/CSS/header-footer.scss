@@ -95,6 +95,10 @@
         padding: 1.5rem 1rem;
         z-index: 201;
 
+        a {
+            text-decoration: none;
+        }
+
         &::before {
             content: "";
             position: absolute;
