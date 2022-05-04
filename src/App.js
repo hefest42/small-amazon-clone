@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Store from "./components/Store/Store";
 import LogIn from "./components/LogIn-SignUp/LogIn";
 import SignUp from "./components/LogIn-SignUp/SignUp";
+import Account from "./components/Account/Account";
 
 function App() {
     const [loggedInAccount, setLoggedInAccount] = useState("");
@@ -14,6 +15,7 @@ function App() {
             <Route path="/store/*" element={<Store loggedInAcc={loggedInAccount} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/log-in" element={<LogIn logInAccount={setLoggedInAccount} />} />
+            <Route path="/account" element={<Account loggedInAcc={loggedInAccount} />} />
         </Routes>
     );
 }

@@ -1,0 +1,42 @@
+@import "./miscellaneous.scss";
+
+.account {
+    width: 25rem;
+
+    &-inner {
+        width: 100%;
+        padding: 2rem 1rem;
+        margin-top: 10rem;
+        border: 1px solid $input-border;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        &__title {
+            width: 90%;
+            font-size: 2rem;
+        }
+
+        &__item {
+            width: 90%;
+            height: 30px;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            span {
+                margin-left: 3px;
+                height: 30px;
+            }
+
+            svg {
+                cursor: pointer;
+            }
+        }
+    }
+}

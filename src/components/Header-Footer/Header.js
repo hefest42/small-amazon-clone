@@ -71,7 +71,9 @@ const Header = ({ cartItems, showCartHandler, changeBackdrop, account }) => {
 
                         {showSettings && (
                             <div className="header-settings center-column" onMouseLeave={() => setShowSettings(false)}>
-                                <p>Account Settings</p>
+                                <Link to="/account">
+                                    <p>Account Settings</p>
+                                </Link>
                                 <p>Log Out</p>
                             </div>
                         )}
