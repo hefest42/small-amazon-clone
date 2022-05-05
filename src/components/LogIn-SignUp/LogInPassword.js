@@ -4,20 +4,20 @@ import { useNavigate } from "react-router-dom";
 
 import { BiError } from "react-icons/bi";
 
-const LogInPassword = ({ account, changeStep }) => {
+const LogInPassword = ({ account, changeStep, logIn }) => {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const passwordRef = useRef();
     const navigate = useNavigate();
 
-    const setErrorMessageHandler = msg => {
+    const setErrorMessageHandler = (msg) => {
         setShowError(true);
         setErrorMessage(msg);
 
         passwordRef.current.value = "";
     };
 
-    const passwordSubmitHandler = e => {
+    const passwordSubmitHandler = (e) => {
         e.preventDefault();
 
         const password = passwordRef.current.value;
@@ -32,11 +32,16 @@ const LogInPassword = ({ account, changeStep }) => {
             return;
         }
 
-        if (account.password === password) navigate("/store");
+        if (account.password === password) {
+            navigate("/store");
+            logIn(account);
+        }
     };
 
     useEffect(() => {
-        if (account === "") changeStep(1);
+        if (account === "") {
+            changeStep(1);
+        }
     });
 
     return (

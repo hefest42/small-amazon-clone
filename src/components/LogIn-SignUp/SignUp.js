@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { BsInfoLg } from "react-icons/bs";
 import { AiFillCaretRight } from "react-icons/ai";
@@ -11,6 +11,7 @@ import LineDivider from "../UI/LineDivider";
 import SmallFooter from "./SmallFooter";
 
 const SignUp = () => {
+    const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("");
     const [showError, setShowError] = useState(false);
     const [allAccounts, setAllAccounts] = useState([]);
@@ -19,7 +20,7 @@ const SignUp = () => {
     const passwordRef = useRef();
     const rePasswordRef = useRef();
 
-    const setErrorMessageHandler = msg => {
+    const setErrorMessageHandler = (msg) => {
         setShowError(true);
         setErrorMessage(msg);
 
@@ -29,7 +30,7 @@ const SignUp = () => {
         rePasswordRef.current.value = "";
     };
 
-    const postAccountHandler = async acc => {
+    const postAccountHandler = async (acc) => {
         try {
             await fetch("https://clone-c99fe-default-rtdb.europe-west1.firebasedatabase.app/accounts.json", {
                 method: "POST",
@@ -41,7 +42,7 @@ const SignUp = () => {
         } catch (error) {}
     };
 
-    const formSubmitHandler = e => {
+    const formSubmitHandler = (e) => {
         e.preventDefault();
 
         console.log(allAccounts);
@@ -62,15 +63,13 @@ const SignUp = () => {
             return;
         }
 
-        if (allAccounts.every(acc => acc.name === name)) {
+        if (allAccounts.filter((acc) => acc.name === name).length > 0) {
             setErrorMessageHandler("Username already exsits.");
-
             return;
         }
 
-        if (allAccounts.every(acc => acc.email === email)) {
+        if (allAccounts.filter((acc) => acc.email === email).length > 0) {
             setErrorMessageHandler("Email already in use. Try a different one.");
-
             return;
         }
 
@@ -86,6 +85,8 @@ const SignUp = () => {
         emailRef.current.value = "";
         passwordRef.current.value = "";
         rePasswordRef.current.value = "";
+
+        navigate("/log-in");
     };
 
     useEffect(() => {

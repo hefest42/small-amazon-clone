@@ -12,7 +12,11 @@ const BrowsingHistory = () => {
                     <span>View and Edit</span>
                 </div>
 
-                <div className="history-container"></div>
+                <div className="history-container">
+                    <div className="history-container__warning center">
+                        <p>You haven't checked out any products. When you do they will show up here!</p>
+                    </div>
+                </div>
             </div>
         </>
     );
