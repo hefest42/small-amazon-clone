@@ -46,8 +46,6 @@ const ChangePassword = ({ changeShowPassword, loggedInAccount }) => {
 
             if (!response.ok) throw new Error();
 
-            console.log(response);
-
             navigate("/log-in");
         } catch (error) {
             changePasswordErrorHandler("Oops... Something went wrong. Please try again.");

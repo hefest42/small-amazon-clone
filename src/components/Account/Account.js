@@ -42,12 +42,12 @@ const Account = ({ loggedInAcc }) => {
 
                     <div className="account-inner__item">
                         <div>Username</div>
-                        <div>Nemanja</div>
+                        <div>{loggedInAcc.name}</div>
                     </div>
                     <div className="account-inner__item">
                         <div>Email</div>
                         <div>
-                            <span>test@test.com</span>
+                            <span>{loggedInAcc.email}</span>
                             <span>
                                 <AiFillEdit onClick={() => setShowChangeEmail(true)} />
                             </span>
