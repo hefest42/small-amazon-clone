@@ -12,7 +12,7 @@ import Cart from "../Cart/Cart";
 // project id
 // clone-c99fe
 
-const Store = ({ loggedInAcc }) => {
+const Store = ({ loggedInAcc, logOut }) => {
     const [showBackdrop, setShowBackdrop] = useState(false);
     const [isCartFocused, setIsCartFocused] = useState(false);
     const [cart, setCart] = useState([]);
@@ -42,7 +42,7 @@ const Store = ({ loggedInAcc }) => {
 
     return (
         <PageWrapper>
-            <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} account={loggedInAcc} />
+            <Header cartItems={cart} showCartHandler={setIsCartFocused} changeBackdrop={setShowBackdrop} account={loggedInAcc} logOutAcc={logOut} />
             <SubHeader changeBackdrop={setShowBackdrop} />
             {showBackdrop && <BackDrop />}
 

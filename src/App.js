@@ -9,10 +9,14 @@ import Account from "./components/Account/Account";
 function App() {
     const [loggedInAccount, setLoggedInAccount] = useState("");
 
+    const logOutHandler = () => {
+        setLoggedInAccount("");
+    };
+
     return (
         <Routes>
             <Route path="/" element={<Navigate replace to="/store" />} />
-            <Route path="/store/*" element={<Store loggedInAcc={loggedInAccount} />} />
+            <Route path="/store/*" element={<Store loggedInAcc={loggedInAccount} logOut={logOutHandler} />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/log-in" element={<LogIn logInAccount={setLoggedInAccount} />} />
             <Route path="/account" element={<Account loggedInAcc={loggedInAccount} />} />

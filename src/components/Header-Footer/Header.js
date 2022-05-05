@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsCart, BsCaretDownFill } from "react-icons/bs";
 import { AiFillCaretDown, AiOutlineSearch } from "react-icons/ai";
 
-const Header = ({ cartItems, showCartHandler, changeBackdrop, account }) => {
+const Header = ({ cartItems, showCartHandler, changeBackdrop, account, logOutAcc }) => {
+    const navigate = useNavigate();
     const [showSettings, setShowSettings] = useState(false);
 
     const mouseEnterCartHandler = () => {
@@ -74,7 +75,14 @@ const Header = ({ cartItems, showCartHandler, changeBackdrop, account }) => {
                                 <Link to="/account">
                                     <p>Account Settings</p>
                                 </Link>
-                                <p>Log Out</p>
+                                <p
+                                    onClick={() => {
+                                        logOutAcc();
+                                        navigate(0);
+                                    }}
+                                >
+                                    Log Out
+                                </p>
                             </div>
                         )}
                     </>
