@@ -46,6 +46,11 @@
     justify-content: center;
     align-items: center;
 
+    &-error {
+        width: 95%;
+        margin-bottom: 1rem;
+    }
+
     &-wrapper {
         background-color: #fff;
         width: 25rem;

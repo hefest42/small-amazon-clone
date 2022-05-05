@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 
 import PageWrapper from "../UI/PageWrapper";
@@ -11,6 +11,22 @@ import ChangeEmail from "./ChangeEmail";
 const Account = ({ loggedInAcc }) => {
     const [showChangePassword, setShowChangePassword] = useState(false);
     const [showChangeEmail, setShowChangeEmail] = useState(false);
+    const [passwordDisplay, setPasswordDisplay] = useState("");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!loggedInAcc) {
+            navigate("/store");
+            return;
+        }
+
+        setPasswordDisplay(
+            loggedInAcc.password
+                .split("")
+                .map((item) => "*")
+                .join("")
+        );
+    }, [loggedInAcc, navigate]);
 
     return (
         <PageWrapper>
@@ -40,7 +56,7 @@ const Account = ({ loggedInAcc }) => {
                     <div className="account-inner__item">
                         <div>Password</div>
                         <div>
-                            <span>********</span>
+                            <span>{passwordDisplay}</span>
                             <span>
                                 <AiFillEdit onClick={() => setShowChangePassword(true)} />
                             </span>
@@ -48,8 +64,8 @@ const Account = ({ loggedInAcc }) => {
                     </div>
                 </div>
             </div>
-            {showChangePassword && <ChangePassword changeShowPassword={setShowChangePassword} />}
-            {showChangeEmail && <ChangeEmail changeShowEmail={setShowChangeEmail} />}
+            {showChangePassword && <ChangePassword changeShowPassword={setShowChangePassword} loggedInAccount={loggedInAcc} />}
+            {showChangeEmail && <ChangeEmail changeShowEmail={setShowChangeEmail} loggedInAccount={loggedInAcc} />}
         </PageWrapper>
     );
 };
